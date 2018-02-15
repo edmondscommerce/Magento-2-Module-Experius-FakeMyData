@@ -165,16 +165,13 @@ class FakeMyData {
     /* TODO make unique address work */
 
     public function getFakeCustomerData($results,$identifier='entity_id',$uniqueAddress=false){
+        $locale = 'en_GB';
+        $faker = $this->faker->create($locale);
+
         foreach($results as $result) {
 
             $seed = $this->getSeed($result[$identifier]);
 
-            $locale = 'en_US';
-            if(isset($result['store_id'])){
-                $locale = $this->getLocaleByStoreId($result['store_id']);
-            }
-
-            $faker = $this->faker->create($locale);
             $faker->seed($seed);
 
             if($this->getCustomProvider()) {
@@ -191,7 +188,7 @@ class FakeMyData {
                 'firstname'=>$firstname,
                 'lastname'=>$lastname,
                 'name' => $firstname . ' ' . $lastname,
-                'email'=> $this->getFakeEmail([$firstname,$lastname,$dateOfBirthYear]),
+                'email'=> $faker->unique()->email,
                 'street' => $this->getFakeStreet([$faker->streetName, $faker->buildingNumber]),
                 'postcode' => $faker->postcode,
                 'telephone' => $faker->phoneNumber,
