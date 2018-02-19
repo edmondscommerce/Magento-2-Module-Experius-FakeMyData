@@ -308,7 +308,7 @@ class FakeMyData {
                 $select->where('subscriber_id IS NOT NULL');
                 $results = $this->connection->fetchAll($select);
                 $this->getFakeCustomerData($results,'customer_id');
-                $this->updateData('subscriber_id',['subscriber_email'=>'email'],'newsletter_subscriber',$results,'subscriber_id');
+                $this->updateData('customer_id',['subscriber_email'=>'email'],'newsletter_subscriber',$results,'subscriber_id');
 
                 break;
         }
