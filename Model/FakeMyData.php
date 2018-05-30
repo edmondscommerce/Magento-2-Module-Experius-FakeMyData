@@ -191,7 +191,7 @@ class FakeMyData {
                 'firstname'=>$firstname,
                 'lastname'=>$lastname,
                 'name' => $firstname . ' ' . $lastname,
-                'email'=> $this->getFakeEmail([$firstname,$lastname,$dateOfBirthYear]),
+                'email'=> rand(0, 99999999) . $faker->unique()->email,
                 'street' => $this->getFakeStreet([$faker->streetName, $faker->buildingNumber]),
                 'postcode' => $faker->postcode,
                 'telephone' => $faker->phoneNumber,
